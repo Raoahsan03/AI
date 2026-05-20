@@ -161,15 +161,15 @@ smart_agri/
 
 | Model | Metric | Value |
 |---|---|---|
-| Decision Tree | Accuracy | 0.9495 |
-| Decision Tree | Precision (weighted) | 0.9524 |
-| Decision Tree | Recall (weighted) | 0.9495 |
-| Decision Tree | F1-Score (weighted) | 0.9499 |
-| KMeans | Silhouette Score | 0.291 |
+| Decision Tree | Accuracy | 0.8437 |
+| Decision Tree | Precision (weighted) | 0.8530 |
+| Decision Tree | Recall (weighted) | 0.8437 |
+| Decision Tree | F1-Score (weighted) | 0.8443 |
+| KMeans | Silhouette Score | 0.254 |
 | KMeans | Zones | 4 |
-| Linear Regression | RMSE | 1,776 kg/ha |
-| Linear Regression | MAE | 1,050 kg/ha |
-| Linear Regression | R² | **0.973** |
+| Linear Regression | RMSE | 2,067 kg/ha |
+| Linear Regression | MAE | 1,182 kg/ha |
+| Linear Regression | R² | **0.957** |
 
 *(Exact values stored in `results/metrics_summary.json`)*
 

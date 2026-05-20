@@ -30,9 +30,9 @@ from src.utils import CLUSTER_PROFILES
 
 def train_decision_tree(X_train, y_train, X_test, y_test, feature_names, label_encoder, results_dir):
     clf = DecisionTreeClassifier(
-        max_depth=12,
-        min_samples_split=5,
-        min_samples_leaf=2,
+        max_depth=8,
+        min_samples_split=8,
+        min_samples_leaf=3,
         class_weight='balanced',
         random_state=42,
     )

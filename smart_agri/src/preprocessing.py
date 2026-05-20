@@ -60,15 +60,19 @@ def generate_dataset(n_per_crop=100, random_state=42, save_path=None):
     np.random.seed(random_state)
     rows = []
 
+    # Noise multiplier > 1 widens each crop's feature distribution so that
+    # neighbouring crops overlap — producing realistic, harder-to-classify data.
+    NOISE = 1.6
+
     for crop, p in CROP_PROFILES.items():
         for _ in range(n_per_crop):
-            N         = max(0.0, np.random.normal(p['N'][0],         p['N'][1]))
-            P         = max(0.0, np.random.normal(p['P'][0],         p['P'][1]))
-            K         = max(0.0, np.random.normal(p['K'][0],         p['K'][1]))
-            temp      = np.random.normal(p['temp'][0],      p['temp'][1])
-            humidity  = float(np.clip(np.random.normal(p['humidity'][0],  p['humidity'][1]),  1, 100))
-            ph        = float(np.clip(np.random.normal(p['ph'][0],        p['ph'][1]),        0, 14))
-            rainfall  = max(0.0, np.random.normal(p['rainfall'][0],  p['rainfall'][1]))
+            N         = max(0.0, np.random.normal(p['N'][0],         p['N'][1] * NOISE))
+            P         = max(0.0, np.random.normal(p['P'][0],         p['P'][1] * NOISE))
+            K         = max(0.0, np.random.normal(p['K'][0],         p['K'][1] * NOISE))
+            temp      = np.random.normal(p['temp'][0],      p['temp'][1] * NOISE)
+            humidity  = float(np.clip(np.random.normal(p['humidity'][0],  p['humidity'][1] * NOISE),  1, 100))
+            ph        = float(np.clip(np.random.normal(p['ph'][0],        p['ph'][1] * NOISE),        0, 14))
+            rainfall  = max(0.0, np.random.normal(p['rainfall'][0],  p['rainfall'][1] * NOISE))
 
             # Yield correlated with how close conditions are to crop ideal
             match = (
